@@ -1,6 +1,6 @@
 class AnonymousR
 {
-    public static void main(String[] ar)
+    public static void main(String[] args)
     {
 
         Runnable r = new Runnable(){
