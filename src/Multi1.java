@@ -1,9 +1,14 @@
 class Multi1 extends Thread
 {
-    public void run()
+  /*public void run()
     {
             System.out.println("Thread " + Thread.currentThread().getId() + " is running");
 
+    }*/
+
+    @Override
+    public void run() {
+        super.run();
     }
 }
 

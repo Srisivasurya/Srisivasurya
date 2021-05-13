@@ -6,7 +6,6 @@ public class Suspend extends Thread
         {
             try
             {
-                // thread to sleep for 500 milliseconds
                 sleep(500);
                 System.out.println(Thread.currentThread().getName());
             }catch(InterruptedException e){System.out.println(e);}
@@ -15,7 +14,6 @@ public class Suspend extends Thread
     }
     public static void main(String args[])
     {
-        // creating three threads
         Suspend t1=new Suspend ();
         Suspend t2=new Suspend ();
         Suspend t3=new Suspend ();
