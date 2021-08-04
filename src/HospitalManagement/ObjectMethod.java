@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ObjectMainMethod {
+public class PDH {
     private static Map <Long,Hospital> hospitalMap;
 
     private static Map<Long,Doctor> doctorMap;
@@ -19,6 +19,12 @@ public class ObjectMainMethod {
     private static Patient patientLaxmi;
     private static Patient patientBadsha;
     private static Patient patientMuthu;
+
+    private static Map <Long,Medicine> medicineMap;
+    private static Medicine medicineMonopril;
+    private static Medicine medicineVecuronium;
+    private static Medicine medicineAvelumab;
+    private static Medicine medicineNystan;
 
     static {
 
@@ -97,6 +103,46 @@ public class ObjectMainMethod {
         patientMap.put(103l, patientLaxmi);
         patientMap.put(104l, patientBadsha);
         patientMap.put(105l, patientMuthu);
+
+        medicineMap = new HashMap<>();
+        medicineMonopril = new Medicine();
+        medicineMonopril.setMedicineName( "Monopril" );
+        medicineMonopril.setMedicineId(1001L);
+        medicineMonopril.setBatchNumber(2001L);
+        medicineMonopril.setExpiryDate(new Date(2023,02,12));
+        medicineMonopril.setPurposeOfMedicine("For clearing blood clot");
+
+        medicineVecuronium = new Medicine();
+        medicineVecuronium.setMedicineName( "Vecuronium" );
+        medicineVecuronium.setMedicineId(1002L);
+        medicineVecuronium.setBatchNumber(2002L);
+        medicineVecuronium.setExpiryDate(new Date(2023,04,15));
+        medicineVecuronium.setPurposeOfMedicine("For Bone strength");
+
+
+        medicineAvelumab = new Medicine();
+        medicineAvelumab.setMedicineName( "Avelumab" );
+        medicineAvelumab.setMedicineId(1003L);
+        medicineAvelumab.setBatchNumber(2003L);
+        medicineAvelumab.setExpiryDate(new Date(2023,06,25));
+        medicineAvelumab.setPurposeOfMedicine("For Skin Disease");
+
+        medicineNystan = new Medicine();
+        medicineNystan .setMedicineName( "Nystan" );
+        medicineNystan .setMedicineId(1004L);
+        medicineNystan .setBatchNumber(2004L);
+        medicineNystan .setExpiryDate(new Date(2023,07,28));
+        medicineNystan .setPurposeOfMedicine("For Nose and Tongue Problem");
+
+        medicineMap.put(1001L,medicineMonopril);
+        medicineMap.put(1002L,medicineVecuronium);
+        medicineMap.put(1003L,medicineAvelumab);
+        medicineMap.put(1004L,medicineNystan);
+
+        medicineMap.put(2001L,medicineMonopril);
+        medicineMap.put(2002L,medicineVecuronium);
+        medicineMap.put(2003L,medicineAvelumab);
+        medicineMap.put(2004L,medicineNystan);
 
     }
 
