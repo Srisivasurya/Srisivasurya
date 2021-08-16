@@ -1,3 +1,5 @@
+package Testans;
+
 import java.util.*;
 
 class ArrDuplicate {

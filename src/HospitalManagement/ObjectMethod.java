@@ -3,9 +3,13 @@ package HospitalManagement;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
 
-public class PDH {
+public class ObjectMethod {
     private static Map <Long,Hospital> hospitalMap;
+    private static Hospital hospital;
 
     private static Map<Long,Doctor> doctorMap;
     private static Doctor doctorSurya;
@@ -21,10 +25,25 @@ public class PDH {
     private static Patient patientMuthu;
 
     private static Map <Long,Medicine> medicineMap;
+    private static Medicine medicine;
+    private static List<Medicine> medicineList;
     private static Medicine medicineMonopril;
     private static Medicine medicineVecuronium;
     private static Medicine medicineAvelumab;
     private static Medicine medicineNystan;
+
+    private static Map <Long,Appointment> appointmentMap;
+    private static Appointment appointmentOne;
+    private static Appointment appointmentTwo;
+    private static Appointment appointmentThree;
+    private static Appointment appointmentFour;
+
+    private static Map<Long,Visiting> visitingMap;
+    private static Visiting visitingOne;
+    private static Visiting visitingTwo;
+    private static Visiting visitingThree;
+    private static Visiting visitingFour;
+
 
     static {
 
@@ -33,7 +52,7 @@ public class PDH {
         hospital.setHospitalName("Frontline Hospital");
         hospital.setHospitalID(0001l);
         hospital.setHospitalLocation("Chennai");
-        hospitalMap.put(0001l, hospital);
+        hospitalMap.put(hospital.getHospitalID(), hospital);
 
 
         doctorMap = new HashMap<>();
@@ -57,10 +76,10 @@ public class PDH {
         doctorDeepa.setDoctorID(0004l);
         doctorDeepa.setSpecialisation("Otolaryngologist.");
 
-        doctorMap.put(0001l, doctorSurya);
-        doctorMap.put(0002l, doctorRamesh);
-        doctorMap.put(0003l, doctorGuru);
-        doctorMap.put(0004l, doctorDeepa);
+        doctorMap.put(doctorSurya.getDoctorID(), doctorSurya);
+        doctorMap.put(doctorRamesh.getDoctorID(), doctorRamesh);
+        doctorMap.put(doctorGuru.getDoctorID(), doctorGuru);
+        doctorMap.put(doctorDeepa.getDoctorID(), doctorDeepa);
 
         patientMap = new HashMap<>();
         patientSivahari = new Patient();
@@ -91,18 +110,11 @@ public class PDH {
         patientBadsha.setPhoneNumber("8524596210");
         patientBadsha.setTypeIpOp("OutPatient");
 
-        patientMuthu = new Patient();
-        patientMuthu.setPatientName("Muthu");
-        patientMuthu.setPatientID(105l);
-        patientMuthu.setPatientDOB(new Date(1985,12,15));
-        patientMuthu.setPhoneNumber("9442346964");
-        patientMuthu.setTypeIpOp("OutPatient");
 
-        patientMap.put(101l, patientSivahari);
-        patientMap.put(102l, patientChandhra);
-        patientMap.put(103l, patientLaxmi);
-        patientMap.put(104l, patientBadsha);
-        patientMap.put(105l, patientMuthu);
+        patientMap.put(patientSivahari.getPatientID(), patientSivahari);
+        patientMap.put(patientChandhra.getPatientID(), patientChandhra);
+        patientMap.put(patientLaxmi.getPatientID(), patientLaxmi);
+        patientMap.put(patientBadsha.getPatientID(), patientBadsha);
 
         medicineMap = new HashMap<>();
         medicineMonopril = new Medicine();
@@ -134,15 +146,126 @@ public class PDH {
         medicineNystan .setExpiryDate(new Date(2023,07,28));
         medicineNystan .setPurposeOfMedicine("For Nose and Tongue Problem");
 
-        medicineMap.put(1001L,medicineMonopril);
-        medicineMap.put(1002L,medicineVecuronium);
-        medicineMap.put(1003L,medicineAvelumab);
-        medicineMap.put(1004L,medicineNystan);
+        medicineMap.put(medicineMonopril.getMedicineId(),medicineMonopril);
+        medicineMap.put(medicineVecuronium.getMedicineId(),medicineVecuronium);
+        medicineMap.put(medicineAvelumab.getMedicineId(), medicineAvelumab);
+        medicineMap.put(medicineNystan.getMedicineId(), medicineNystan);
 
-        medicineMap.put(2001L,medicineMonopril);
-        medicineMap.put(2002L,medicineVecuronium);
-        medicineMap.put(2003L,medicineAvelumab);
-        medicineMap.put(2004L,medicineNystan);
+        medicineMap.put(medicineMonopril.getBatchNumber(), medicineMonopril);
+        medicineMap.put(medicineVecuronium.getBatchNumber(), medicineVecuronium);
+        medicineMap.put(medicineAvelumab.getBatchNumber(), medicineAvelumab);
+        medicineMap.put(medicineNystan.getBatchNumber(), medicineNystan);
+
+        appointmentMap= new HashMap<>();
+        appointmentOne = new Appointment();
+        appointmentOne.setAppointmentID(1L);
+        appointmentOne.setPatientID(patientMap.get(101L));
+        appointmentOne.setDoctorID(doctorMap.get(001L));
+        appointmentOne.setDateofVisit(new Date(2021,04,05));
+        appointmentOne.setPurposeofVisit("For Heart weakening");
+        appointmentOne.setBP(95.5F);
+        appointmentOne.setTemperature(80F);
+        appointmentOne.setIsFirstVisit(false);
+
+        appointmentTwo = new Appointment();
+        appointmentTwo.setAppointmentID(2L);
+        appointmentTwo.setPatientID(patientMap.get(102L));
+        appointmentTwo.setDoctorID(doctorMap.get(002L));
+        appointmentTwo.setDateofVisit(new Date(2021,04,10));
+        appointmentTwo.setPurposeofVisit("For Bone Fracture");
+        appointmentTwo.setBP(94.5F);
+        appointmentTwo.setTemperature(81F);
+        appointmentTwo.setIsFirstVisit(false);
+
+        appointmentThree = new Appointment();
+        appointmentThree.setAppointmentID(03L);
+        appointmentThree.setPatientID(patientMap.get(103L));
+        appointmentThree.setDoctorID(doctorMap.get(003L));
+        appointmentThree.setDateofVisit(new Date(2021,04,15));
+        appointmentThree.setPurposeofVisit("For Skin Allergy");
+        appointmentThree.setBP(92.5F);
+        appointmentThree.setTemperature(82.3F);
+        appointmentThree.setIsFirstVisit(false);
+
+        appointmentFour = new Appointment();
+        appointmentFour.setAppointmentID(04L);
+        appointmentFour.setPatientID(patientMap.get(104L));
+        appointmentFour.setDoctorID(doctorMap.get(004L));
+        appointmentFour.setDateofVisit(new Date(2021,04,15));
+        appointmentFour.setPurposeofVisit("For Tongue Problem");
+        appointmentFour.setBP(94.5F);
+        appointmentFour.setTemperature(84.3F);
+        appointmentFour.setIsFirstVisit(false);
+
+        appointmentMap.put(appointmentOne.getAppointmentID(), appointmentOne);
+        appointmentMap.put(appointmentTwo.getAppointmentID(), appointmentTwo);
+        appointmentMap.put(appointmentThree.getAppointmentID(), appointmentThree);
+        appointmentMap.put(appointmentFour.getAppointmentID(), appointmentFour);
+
+
+
+    }
+
+    static public List<Medicine> getMedicine() {
+
+        medicineList = new ArrayList<>();
+
+        Random random = new Random();
+        int randomNumber;
+        for (int i = 0; i < 3; i++) {
+            randomNumber = random.nextInt(5);
+            if (medicineMap.containsKey(new Long(randomNumber)))
+                medicineList.add(medicineMap.get(new Long(randomNumber)));
+        }
+
+        return medicineList;
+    }
+
+    static public void populateVisitInformation() {
+
+        visitingMap =new HashMap<>();
+        visitingOne = new Visiting();
+        visitingOne.setVisitID(010L);
+        visitingOne.setAppointment(appointmentMap.get(1L));
+        visitingOne.setDoctorRecommendation("Walk Regularly");
+        visitingOne.setMedicine("Monopril");
+
+        visitingTwo = new Visiting();
+        visitingTwo.setVisitID(020L);
+        visitingTwo.setAppointment(appointmentMap.get(2L));
+        visitingTwo.setDoctorRecommendation("Take proper rest and relax");
+        visitingTwo.setMedicine("Vecuronium");
+
+        visitingThree = new Visiting();
+        visitingThree.setVisitID(030L);
+        visitingThree.setAppointment(appointmentMap.get(3L));
+        visitingThree.setDoctorRecommendation("Take sunlight at morning and evening");
+        visitingThree.setMedicine("Avelumab");
+
+        visitingFour = new Visiting();
+        visitingFour.setVisitID(040L);
+        visitingFour.setAppointment(appointmentMap.get(4L));
+        visitingFour.setDoctorRecommendation("Do medication");
+        visitingFour.setMedicine("Nystan");
+
+        visitingMap.put(visitingOne.getVisitID(), visitingOne);
+        visitingMap.put(visitingTwo.getVisitID(), visitingTwo);
+        visitingMap.put(visitingThree.getVisitID(), visitingThree);
+        visitingMap.put(visitingFour.getVisitID(), visitingFour);
+
+    }
+
+    public static void main(String args[]){
+
+        populateVisitInformation();
+
+        CreateAppointment ca = new CreateAppointment();
+
+        Appointment appointment = ca.createAppointment(101L,patientMap,001L,doctorMap,
+                " Chest Pain ",appointmentMap);
+
+
+        System.out.println(appointment);
 
     }
 

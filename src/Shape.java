@@ -3,7 +3,7 @@ abstract class Area {
 
     Area(String num) {
         name = num;
-    }f
+    }
 
     abstract int getArea();
 }
@@ -36,7 +36,7 @@ class Circle extends Area {
     }
 }
 
-public class Main {
+public class Shape {
     public static void main(String args[]) {
         Rectangle obj = new Rectangle("Rectangle", 1, 2);
         System.out.println( obj.name );

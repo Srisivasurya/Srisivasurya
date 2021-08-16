@@ -1,7 +1,7 @@
 package Testans;
 import java.util.Scanner;
 
-public class CalculateNumber extends Exception {
+public class CalNumber extends Exception {
     public double calculate(double a, double b, String operator) {
         double answer = 0;
         try {
@@ -25,19 +25,17 @@ public class CalculateNumber extends Exception {
         return answer;
     }
     public static void main(String args[]) {
-        CalculateNumber calculateNumber=new CalculateNumber();
+        CalNumber calNumber=new CalNumber();
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the first integer number");
+        System.out.println("Enter the first number");
         double firstNumber=scan.nextDouble();
-        System.out.println("Enter the second integer number");
+        System.out.println("Enter the second number");
         double secondNumber=scan.nextDouble();
         Scanner scan1=new Scanner(System.in);
-        System.out.println("Enter the operator     Ex: +, _, *, /");
+        System.out.println("Enter the operator");
         String operator=scan1.nextLine();
-
-        calculateNumber.calculate(firstNumber,secondNumber,operator);
-        double result =calculateNumber.calculate(firstNumber,secondNumber,operator);
-        System.out.println("The result is " + result);
+        double res =calNumber.calculate(firstNumber,secondNumber,null);
+        System.out.println("The result is " + res);
 
     }
 }

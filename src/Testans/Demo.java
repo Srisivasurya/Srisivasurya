@@ -1,7 +1,6 @@
 package Testans;
 
-public abstract class Base1
+public abstract class Demo
 {
-    public void sample(String a);
-
+    public abstract void sample(String a);
 }

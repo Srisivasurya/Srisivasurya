@@ -1,3 +1,5 @@
+package Testans;
+
 import java.io.*;
 
 class Swap {
