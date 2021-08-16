@@ -7,6 +7,7 @@ public class Report {
     public void getPatientDetail(Map<Long, Patient> patientDetails, Long patientId, String patientName) throws Exception {
 
         Patient patient = new Patient();
+        Patirnt.name;
 
         if (patientDetails.isEmpty())
             throw new Exception("patient detail is null");
